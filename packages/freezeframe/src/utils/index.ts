@@ -68,7 +68,7 @@ export const dedupeImages = (images: HTMLImageElement[]) => {
 };
 
 export const htmlToNode = (html: string) => {
-  const $wrap = window.document.createElement('div');
+  const $wrap = (typeof window !== 'undefined' && window) ? window.document.createElement('div') : {};
   $wrap.innerHTML = html;
   const $content = $wrap.childNodes;
   return ($content.length > 1
